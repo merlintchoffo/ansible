@@ -1,0 +1,6 @@
+---
+app_user: "admin"
+http_host: "debnode1ovh"
+http_conf: "debnode1ovh.conf"
+http_port: "80"
+disable_default: true

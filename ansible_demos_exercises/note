@@ -1,0 +1,53 @@
+ansible-playbook playbook-ping-check.yaml -l node1 -i inventory.yaml
+ansible-playbook playbook-ping-check.yaml -l web -i inventory.yaml
+
+debian@control:~/ansible_demos_exercises/ansible-to-install-and-set-up-apache-on-ubuntu$ ansible-playbook playbook.yaml -l debnode1ovh -u admin
+<-- admin a été préalablement créé et fait partie du groupe sudo
+debian@node1:~$ groups admin
+admin : admin sudo
+
+# Voici le résultat de l'exécution sur le node2
+debian@control:~/ansible_demos_exercises/apache-installation-using-docker$ ansible-playbook -l web deploy-container.yaml -i inventory.yaml
+
+
+Vault:
+
+debian@control:~/ansible_demos_exercises/vault$ ansible-playbook -l web -i hosts.yaml --ask-vault-pass deploy-container0.yaml
+BECOME password:
+Vault password:
+
+PLAY [Installation Apache utilisant docker] ************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************
+ok: [node2]
+
+TASK [install python-pip] ******************************************************************************************************
+ok: [node2]
+
+TASK [Install docker python] ***************************************************************************************************
+ok: [node2]
+
+TASK [Create Apache container] *************************************************************************************************
+[DEPRECATION WARNING]: The container_default_behavior option will change its default value from "compatibility" to
+"no_defaults" in community.docker 2.0.0. To remove this warning, please specify an explicit value for it now. This feature will
+ be removed from community.docker in version 2.0.0. Deprecation warnings can be disabled by setting deprecation_warnings=False
+in ansible.cfg.
+ok: [node2]
+
+PLAY RECAP *********************************************************************************************************************
+node2                      : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+debian@control:~/ansible_demos_exercises/vault$ cat files/secrets/credentials.yaml
+$ANSIBLE_VAULT;1.1;AES256
+35356134366163393766303632633962383633646136336362653964356337363737343063326138
+3031386134393666376333396362396638343537333666350a306262373531333235316132386466
+61393563363437353232393862353631666232633063333764393361336665636561643431373163
+6638303633663230340a303430396564626137393637393364313761666531376537373834383064
+32346166303035346532343936333164383435353434323333323862373633386563373430353233
+36663766303731356233633466303937346130623535366637636564626235333763616161373961
+65383465316530326165383239646330613139353935346231653232653733363638663736356333
+63646235646465353733
+
+debian@control:~/ansible_demos_exercises/vault$ grep -r "ansible_password"  <-- comment savoir où est déclaré la variable ansible_password ?
+group_vars/web.yaml:ansible_password: '{{vault_ansible_password}}'  <-- ansible_password est une var qui contient una autre variable, qui a été vaulté dans un fichier distant.
+Le fichier déchiffré reste en ram de la machine distante, il ne sera pas copié sur le disque ...

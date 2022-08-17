@@ -1,0 +1,5 @@
+
+Erreur rencontre sur le playbook apache-installation-using-docker\playbook-prerequisite-docker.yaml:
+
+TASK [ensure docker and dependencies are installed] **********************************************************************************************************************************************************
+fatal: [node2]: FAILED! => {"changed": false, "msg": "E:Conflicting values set for option Signed-By regarding source https://download.docker.com/linux/debian/ bullseye: /etc/apt/keyrings/docker.gpg != , E:The list of sources could not be read."}

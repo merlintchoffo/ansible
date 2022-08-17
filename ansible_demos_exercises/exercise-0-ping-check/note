@@ -1,0 +1,3 @@
+ansible-playbook playbook-ping-check.yaml -l node1 -i inventory.yaml
+ansible-playbook playbook-ping-check.yaml -l web -i inventory.yaml
+debian@control:~/ansible_demos_exercises/ansible-to-install-and-set-up-apache-on-ubuntu$ ansible-playbook playbook.yaml -l debnode1ovh -u admin

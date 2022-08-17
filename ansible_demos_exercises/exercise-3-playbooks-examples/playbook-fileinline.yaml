@@ -1,0 +1,12 @@
+-
+  name: Add DNS server to resolv.conf
+  hosts: localhost
+  tasks:
+    -  lineinfile:
+         path: /etc/resolv.conf
+         line: 'node1 {{ip_node1}}'
+       become: true
+
+    - name: Execute a script locally
+      local_action: command sh script.sh
+      become: true

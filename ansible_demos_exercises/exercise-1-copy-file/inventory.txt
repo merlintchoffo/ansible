@@ -1,0 +1,6 @@
+[nodes]
+debnode1ovh ansible_user=debian ansible_ssh_pass=
+node2 ansible_host=51.195.233.6 ansible_user=admin
+
+[nodes:vars]
+env=portail de formation

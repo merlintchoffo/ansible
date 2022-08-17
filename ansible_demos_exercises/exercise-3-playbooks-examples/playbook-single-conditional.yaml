@@ -1,0 +1,17 @@
+---
+- name: Install NGINX
+  hosts: all
+  tasks:
+  - name: Install NGINX on Debian
+    become_method: sudo
+    apt:
+      name: nginx
+      state: present
+    when: ansible_os_family == "Debian"
+    become: yes
+
+  - name: Install NGINX on Redhat
+    yum:
+      name: nginx
+      state: present
+    when: ansible_os_family == "RedHat"

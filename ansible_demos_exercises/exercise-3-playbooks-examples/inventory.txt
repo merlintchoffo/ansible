@@ -1,0 +1,1 @@
+localhost ansible_connection=local ip_node1=51.89.224.181

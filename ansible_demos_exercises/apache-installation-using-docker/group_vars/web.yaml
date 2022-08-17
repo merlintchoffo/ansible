@@ -1,0 +1,4 @@
+---
+ansible_user: admin
+sshpass: assomption
+serveur2: 51.195.233.6

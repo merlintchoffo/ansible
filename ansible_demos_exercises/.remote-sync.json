@@ -1,0 +1,19 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "51.77.111.68",
+  "port": "22",
+  "target": "/home/debian/ansible_demos_exercises",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "debian",
+  "keyfile": "C:\\Users\\User\\Desktop\\client\\ansible\\ansible_demos_exercises\\mynewkeypair.pem",
+  "watch": [],
+  "transport": "scp"
+}
